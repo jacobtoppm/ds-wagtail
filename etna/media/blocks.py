@@ -69,6 +69,6 @@ class ImageBlock(blocks.StructBlock):
         return super().clean(value)
 
     class Meta:
-        template = "media/blocks/image-block.html"
+        template = "media/blocks/image-block-default.html"
         help_text = "An image block which encourages accessibility-first design."
         icon = "fa-image"
