@@ -40,4 +40,7 @@ jobs:
         run: docker-compose up -d
       - name: Run tests
         run: |
-          docker-compose exec -T web ./manage.py test
+          docker-compose exec -T web poetry run ./manage.py test
+      - name: Check for missing migrations
+        run: |
+          docker-compose exec -T web poetry run ./manage.py makemigrations --check
