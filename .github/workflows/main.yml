@@ -10,7 +10,7 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  lint-python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,7 +30,8 @@ jobs:
       - name: isort
         run: |
           isort .
-  test:
+  
+  test-python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -44,3 +45,12 @@ jobs:
       - name: Check for missing migrations
         run: |
           docker-compose exec -T web poetry run ./manage.py makemigrations --check
+
+  test-js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install
+        run: npm install
+      - name: Test js
+        run: npm test
