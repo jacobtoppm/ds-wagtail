@@ -1,4 +1,4 @@
-name: wagtail-content-import CI
+name: CI
 
 on:
   push:
@@ -40,4 +40,4 @@ jobs:
         run: docker-compose up -d
       - name: Run tests
         run: |
-          docker-compose exec web ./manage.py test
+          docker-compose exec -T web ./manage.py test
